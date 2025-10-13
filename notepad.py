@@ -17,6 +17,10 @@ class Notepad:
         
         layout = [
             [eg.Menu(menu_def, key='-MENU-')],
+            [eg.Button('新規作成', key='-BTN_NEW-', size=(10, 1)),
+             eg.Button('開く', key='-BTN_OPEN-', size=(10, 1)),
+             eg.Button('保存', key='-BTN_SAVE-', size=(10, 1)),
+             eg.Button('名前を付けて保存', key='-BTN_SAVEAS-', size=(15, 1))],
             [eg.Multiline(
                 '', 
                 size=(80, 25), 
@@ -212,6 +216,16 @@ class Notepad:
                 self.select_all()
             elif event == 'バージョン情報(&A)':
                 self.about()
+            
+            # ボタンイベント
+            elif event == '-BTN_NEW-':
+                self.new_file()
+            elif event == '-BTN_OPEN-':
+                self.open_file()
+            elif event == '-BTN_SAVE-':
+                self.save_file()
+            elif event == '-BTN_SAVEAS-':
+                self.save_file_as()
         
         self.window.close()
 
